@@ -26,5 +26,5 @@ COPY . /app/
 # Expose port (Cloud providers like Railway override this via ENV variable, but good practice for local)
 EXPOSE 5000
 
-# Run gunicorn server with 1 worker and 4 threads, binding to the container port
-CMD ["gunicorn", "app:app", "--workers", "1", "--threads", "4", "--bind", "0.0.0.0:5000"]
+# Run gunicorn server
+CMD gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4
